@@ -14,25 +14,40 @@
     }
 
     function OpcjePalenia(){
-    var svalue=document.getElementById("Smoke").value;
+    var svalue=document.getElementById("Smokeid").value;
     var a=document.getElementById("SmokeidAB");
     var c=document.getElementById("SmokeidC");
     var d=document.getElementById("SmokeidD");
+
     if (svalue=="yes1more" || svalue=="yes1less")
     {
      a.style.display='block';
+     c.style.display='none';
+     d.style.display='none';
      a.style.visibility='visible';
+     c.style.visibility='hidden';
+     d.style.visibility='hidden';
     }
-    else if (f=="quit")
+    else if (svalue=="quit")
     {
+     a.style.display='none';
      c.style.display='block';
+     d.style.display='none';
+
+     a.style.visibility='hidden';
      c.style.visibility='visible';
+     d.style.visibility='hidden';
     }
     else
     {
+     a.style.display='none';
+     c.style.display='none';
      d.style.display='block';
+
+     a.style.visibility='hidden';
+     c.style.visibility='hidden';
      d.style.visibility='visible';
-        }
+     }
     }
 </script>
 
@@ -43,6 +58,7 @@
         <label for="age">Wiek:</label>
         <input type="number" class="form-control" id="age" name="age" min="1" max="120" required>
     </div>
+
     <b>Płeć</b>
     <div class="form-group">
         <label class="radio-inline">
@@ -52,18 +68,22 @@
           <input type="radio" name="plec" value="m">Mężczyzna
         </label>
     </div>
+
     <div class="form-group">
         <label for="DataBadania">Data badania rezonansem: </label>
-        <input type="date" class="form-control" id="DataBadania" name="DataBadania" oninput="WypelnijDaty()" required>
+        <input type="date" class="form-control" id="DataBadania" name="DataBadania" oninput="WypelnijDaty();" required>
     </div>
+
     <div class="form-group">
       <label for="MiejsceUrodzenia">Miejsce urodzenia:</label>
         <input type="text" class="form-control" id="MiejsceUrodzenia" name="MiejsceUrodzenia" required>
     </div>
+
     <div class="form-group">
         <label for="LatMieszkania">Ile lat mieszkał Pan/Pani w tej miejscowości przed <span id="c"></span>?</label>
         <input type="number" class="form-control" id="LatMieszkania" name="LatMieszkania"  required>
     </div>
+
     <b>W jakiej odległości od domu, w którym Pan/Pani mieszkała w <span id="d"></span> znajdowały się ulice z dużym ruchem samochodowym?</b>
     <div class="form-group">
         <label class="radio-inline">
@@ -116,17 +136,16 @@
 
 	<b>Czy pali Pan/Pani papierosy? </b>
 	<div id="AgeSmokeid" class="form-group" >
-		<select name="Smoke" onchange="OpcjePalenia()">
-			<option id="Smoke" value="yes1more">Tak, co najmniej jeden papieros dziennie</option>
-			<option id="Smoke" value="yes1less">Tak, rzadziej niż jeden papieros dziennie</option>
-			<option id="Smoke" value="quit">Rzuciłem / Rzuciłam palenie</option>
-			<option id="Smoke" value="never">Nigdy nie paliłem / paliłam regularnie</option>
+		<select id="Smokeid" onchange="OpcjePalenia();" >
+			<option value="yes1more">Tak, co najmniej jeden papieros dziennie</option>
+			<option value="yes1less">Tak, rzadziej niż jeden papieros dziennie</option>
+			<option value="quit">Rzuciłem / Rzuciłam palenie</option>
+			<option value="never">Nigdy nie paliłem / paliłam regularnie</option>
 		</select>
 	</div>
 
 
-    <div id="SmokeidAB" style="visibility: hidden; display: none">
-	<h3>Część III: Dane medyczne cz.2</h3>
+    <div id="SmokeidAB">
 
 	<div  class="form-group">
         <label for="AgeSmoke">Od jak dawna Pan/Pani pali? </label>
@@ -191,7 +210,6 @@
 
 	</div>
 	<div id="SmokeidC" style="visibility: hidden; display: none">
-	<h3>Część III: Dane medyczne cz.2</h3>
 	
 	<div class="form-group">
         <label for="QuitYear">Ile lat temu rzucił/a Pan/Pani palenie? </label>
@@ -245,7 +263,7 @@
 
     </div>
 	<div id="SmokeidD" style="visibility: hidden; display: none">
-	<h3>Część III: Dane medyczne cz.2</h3>
+
 	
 	<div class="form-group">
 		<label class="radio-inline"> Czy w roku badania MRI był Pan / była Pani narażona na dym tytoniowy w mieszkaniu?</label> 
@@ -256,11 +274,9 @@
 		</label>
 	</div>
 	<br>
-	
-	<button type="submit" class="btn btn-default">Prześlij formularz</button>
-</form>
 	</div>
+	<button type="submit" class="btn btn-default">Prześlij formularz</button>
+    </form>
 
-	
-</body></html>
+
 {% endblock %}
