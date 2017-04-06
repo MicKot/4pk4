@@ -10,7 +10,7 @@ def welcome():
 
 @app.route("/form")
 def show_form():
-    return render_template('form2.html')
+    return render_template('form.html')
 
 
 @app.route('/kontakt')
