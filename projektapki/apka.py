@@ -14,6 +14,7 @@ class Formdata(db.Model):
     __tablename__ = 'dane'
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.now)
+    patientnumber= db.Column(db.Integer)
     age = db.Column(db.Integer)
     sex = db.Column(db.String)
     researchdate = db.Column(db.String)
@@ -21,10 +22,11 @@ class Formdata(db.Model):
     noise = db.Column(db.Boolean)
     heating = db.Column(db.String)
     education = db.Column(db.String)
+    tobaccosmoke = db.Column(db.String)
     smoking = db.Column(db.String)
     agesmoke = db.Column(db.Integer)
-    regularsmoke = db.Column(db.Boolean)
-    nocig = db.Column(db.Integer)
+    regularsmoke = db.Column(db.String)
+    nocig = db.Column(db.String)
     anocigyeard = db.Column(db.Integer)
     anocigyear1 = db.Column(db.Integer)
     anocigyear2 = db.Column(db.Integer)
@@ -37,13 +39,14 @@ class Formdata(db.Model):
     quityear5 = db.Column(db.Integer)
     quityear10 = db.Column(db.Integer)
     quitcigarbrand = db.Column(db.String)
-    tobaccosmoke = db.Column(db.Boolean)
 
-    def __init__(self, age, sex, researchdate, birthplace, yearsliving, roaddistance, noise, heating, education,
+
+    def __init__(self, patientnumber,age, sex, researchdate, birthplace, yearsliving, roaddistance, noise, heating, education, tobaccosmoke,
                  smoking, agesmoke,
                  regularsmoke, nocig, anocigyear, anocigyear1, anocigyear2, anocigyear5, cigarbrand, quityear,
                  quit1year, quityear1, quityear2, quityear5,
-                 quityear10, quitcigarbrand, tobaccosmoke):
+                 quityear10, quitcigarbrand):
+        self.patientnumber = patientnumber
         self.age = age
         self.sex = sex
         self.researchdate = researchdate
@@ -53,6 +56,7 @@ class Formdata(db.Model):
         self.noise = noise
         self.heating = heating
         self.education = education
+        self.tobaccosmoke = tobaccosmoke
         self.smoking = smoking
         self.agesmoke = agesmoke
         self.regularsmoke = regularsmoke
@@ -69,7 +73,7 @@ class Formdata(db.Model):
         self.quityear5 = quityear5
         self.quityear10 = quityear10
         self.quitcigarbrand = quitcigarbrand
-        self.tobaccosmoke = tobaccosmoke
+
 
 
 db.create_all()
@@ -98,6 +102,7 @@ def dziekuje():
 @app.route("/save", methods=['POST'])
 def save():
     # Get data from FORM
+    patientnumber=request.form['patientnumber']
     age = request.form['age']
     sex = request.form['sex']
     researchdate = request.form['researchdate']
@@ -107,6 +112,7 @@ def save():
     noise = request.form['noise']
     heating = request.form['heating']
     education = request.form['education']
+    tobaccosmoke = request.form['tobaccosmoke']
     smoking = request.form['smoking']
     agesmoke = request.form['agesmoke']
     regularsmoke = request.form['regularsmoke']
@@ -123,14 +129,14 @@ def save():
     quityear5 = request.form['quityear5']
     quityear10 = request.form['quityear10']
     quitcigarbrand = request.form['quitcigarbrand']
-    tobaccosmoke = request.form['tobaccosmoke']
+
 
 
     # Save the data
-    fd = Formdata(age, sex, researchdate, birthplace, yearsliving, roaddistance, noise, heating, education, smoking,
+    fd = Formdata(patientnumber, age, sex, researchdate, birthplace, yearsliving, roaddistance, noise, heating, education, tobaccosmoke, smoking,
                   agesmoke, regularsmoke, nocig,
                   anocigyear, anocigyear1, anocigyear2, anocigyear5, cigarbrand, quityear, quit1year, quityear1,
-                  quityear2, quityear5, quityear10, quitcigarbrand, tobaccosmoke)
+                  quityear2, quityear5, quityear10, quitcigarbrand)
 
     db.session.add(fd)
     db.session.commit()

@@ -13,8 +13,15 @@
   <h1>Proszę o wypełnienie ankiety</h1>
   </div>
   <p>-->
-    <a href="/form" class="btn btn-lg btn-info" role="button">Wypełnij ankietę</a>
-  </p>
+<b>Proszę wpisać numer uzyskany od pracownika PAN</b>
+<form action="/form" method="GET">
+  <input type="number" name="patientnumber">
+  <br>
+  <br>
+  <button type="submit" class="btn btn-info">Wypełnij ankietę</button>
+</form>
+<br>
+
 
 
 {% endblock %}

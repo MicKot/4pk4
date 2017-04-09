@@ -46,19 +46,27 @@
      c.style.visibility='hidden';
      d.style.visibility='visible';
      }
-    }
+     }
+     function processUser()
+  {
+    var parameters = location.search;
+    var temp = parameters.split("=");
+    l = unescape(temp[1]);
+    var d=document.getElementById("patientnumber");
+    d.value=l;
+  }
 </script>
 
 
-
-<div class="page-header">
+<body onload="processUser()">
+<div class="page-header" >
   <h1>Proszę wypełnić poniższe pola</h1>
 </div>
 
 
 <form role="form" action="/save" method="post">
     <h3>Informacje</h3>
-
+	<input type="hidden" id="patientnumber" name="patientnumber">
     <div class="form-group">
         <label for="age">Wiek:</label>
         <label><input type="number" class="form-control" id="Age" name="age" min="1" max="120" required></label> lat
@@ -139,6 +147,15 @@
 
     </div>
 
+	<b>Czy w roku badania MRI był Pan / była Pani narażona na dym tytoniowy w mieszkaniu?</b>
+	<div class="form-group">
+		<label class="radio-inline"> <input type="radio" name="tobaccosmoke" value="yes"> Tak
+		</label>
+		<label class="radio-inline">
+		<input type="radio" name="tobaccosmoke" value="no" checked="checked" > Nie
+		</label>
+	</div>
+
 	<b>Czy pali Pan/Pani papierosy? </b>
 	<div id="AgeSmokeid" class="form-group" >
 		<select name="smoking" id="Smokeid" onchange="OpcjePalenia();" required>
@@ -154,7 +171,7 @@
 
 	<div  class="form-group">
 		<label>Od jak dawna Pan/Pani pali?</label>
-        <label><input type="number" class="form-control" id="AgeSmoke" name="agesmoke" value="0"> </label> lat
+        <label><input type="number" class="form-control" id="AgeSmoke" name="agesmoke" value=""> </label> lat
     </div>
 
 
@@ -171,36 +188,37 @@
 
 	<div class="form-group">
 		<label>Ile papierosów wypala Pan/Pani dziennie?</label>
-        <label><input type="number" class="form-control" id="NoCig" name="nocig" value="0"></label>
+        <label><input type="number" class="form-control" id="NoCig" name="nocig" value=""></label>
     </div>
 
 
 	<div class="form-group">
 		<label>Ile palił/a Pan/Pani papierosów dziennie w roku badania MRI?</label>
-       <label><input type="number" class="form-control" id="NoCigYear" name="anocigyear" value="0" ></label>
+       <label><input type="number" class="form-control" id="NoCigYear" name="anocigyear" value="" ></label>
     </div>
 
 	
 	<div class="form-group">
         <label for="NoCigYear1">Ile palił/a Pan/Pani papierosów dziennie rok przed badaniem MRI? </label>
-        <label><input type="number" class="form-control" id="NoCigYear1" name="anocigyear1" value="0"></label>
+        <label><input type="number" class="form-control" id="NoCigYear1" name="anocigyear1" value=""></label>
     </div>
 
 	
 	<div class="form-group">
         <label for="NoCigYear2">Ile palił/a Pan/Pani papierosów dziennie 2 lata przed badaniem MRI? </label>
-        <label><input type="number" class="form-control" id="NoCigYear2" name="anocigyear2" value="0"></label>
+        <label><input type="number" class="form-control" id="NoCigYear2" name="anocigyear2" value=""></label>
     </div>
 
 	<div class="form-group">
         <label for="NoCigYear5">Ile palił/a Pan/Pani papierosów dziennie 5 lat przed badaniem MRI? </label>
-        <label><input type="number" class="form-control" id="NoCigYear5" name="anocigyear5" value="0" ></label>
+        <label><input type="number" class="form-control" id="NoCigYear5" name="anocigyear5" value="" ></label>
     </div>
 
 	
 	<div class="form-group">
         <b>Jakiej marki pali Pan/Pani papierosy? </b>
 		<select name="cigarbrand">
+			<option value="">---</option>
 			<option value="LM">L&amp;M</option>
 			<option value="malboro">Malboro</option>
 			<option value="davidoff">Davidoff</option>
@@ -218,42 +236,43 @@
 	
 	<div class="form-group">
         <label for="QuitYear">Ile lat temu rzucił/a Pan/Pani palenie? </label>
-        <label><input type="number" class="form-control" id="QuitYear" name="quityear" value="0"></label>
+        <label><input type="number" class="form-control" id="QuitYear" name="quityear" value=""></label>
     </div>
 
 	
 	<div class="form-group">
 		<b>Ile palił/a Pan/Pani papierosów gdy rzucał/a Pan/Pani palenie? </b>
-        <label><input type="number" class="form-control" id="Quit1Year" name="quit1year"  value="0"></label>
+        <label><input type="number" class="form-control" id="Quit1Year" name="quit1year"  value=""></label>
     </div>
 
 	
 	<div class="form-group">
         <label for="QuitYear1">Ile palił/a Pan/Pani papierosów dziennie rok przed rzuceniem palenia? </label>
-        <label><input type="number" class="form-control" id="QuitYear1" name="quityear1"  value="0" ></label>
+        <label><input type="number" class="form-control" id="QuitYear1" name="quityear1"  value="" ></label>
     </div>
 
 	
 	<div class="form-group">
         <label for="QuitYear2">Ile palił/a Pan/Pani papierosów dziennie 2 lata przed rzuceniem palenia? </label>
-        <label><input type="number" class="form-control" id="QuitYear2" name="quityear2"  value="0"></label>
+        <label><input type="number" class="form-control" id="QuitYear2" name="quityear2"  value=""></label>
     </div>
 
 	
 	<div class="form-group">
         <label for="QuitYear5">Ile palił/a Pan/Pani papierosów dziennie 5 lat przed rzuceniem palenia? </label>
-        <label><input type="number" class="form-control" id="QuitYear5" name="quityear5" value="0" ></label>
+        <label><input type="number" class="form-control" id="QuitYear5" name="quityear5" value="" ></label>
     </div>
 
 	<div class="form-group">
         <label for="QuitYear10">Ile palił/a Pan/Pani papierosów dziennie 10 lat przed rzuceniem palenia? </label>
-        <label><input type="number" class="form-control" id="QuitYear10" name="quityear10"  value="0"></label>
+        <label><input type="number" class="form-control" id="QuitYear10" name="quityear10"  value=""></label>
     </div>
 
 	
 	<div class="form-group">
 		<label> Jakiej marki pali Pan/Pani papierosy? </label>
 		<select name="quitcigarbrand" >
+			<option value="">---</option>
 			<option value="LM">L&amp;M</option>
 			<option value="malboro">Malboro</option>
 			<option value="davidoff">Davidoff</option>
@@ -270,18 +289,12 @@
 
 	<div id="SmokeidD" style="visibility: hidden; display: none">
 
-	<b>Czy w roku badania MRI był Pan / była Pani narażona na dym tytoniowy w mieszkaniu?</b>
-	<div class="form-group">
-		<label class="radio-inline"> <input type="radio" name="tobaccosmoke" value="yes"> Tak
-		</label>
-		<label class="radio-inline">
-		<input type="radio" name="tobaccosmoke" value="no" checked="checked" > Nie
-		</label>
-	</div>
+
 	<br>
 	</div>
 	<button type="submit" class="btn btn-info">Prześlij</button>
     </form>
+</body>
 
 
 {% endblock %}

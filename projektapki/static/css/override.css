@@ -1,6 +1,7 @@
 .navbar-custom {
   background-color: #1c3463;
   border-color: #254bc2;
+
 }
 .navbar-custom .navbar-brand {
   color: #ecf0f1;
@@ -11,9 +12,11 @@
 }
 .navbar-custom .navbar-text {
   color: #ecf0f1;
+  font-size: 120% !important;
 }
 .navbar-custom .navbar-nav > li > a {
   color: #ecf0f1;
+
 }
 .navbar-custom .navbar-nav > li > a:hover,
 .navbar-custom .navbar-nav > li > a:focus {
