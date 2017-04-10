@@ -1,10 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base2.html" %}
 
-</body>
-</html>
+{% block content %}
+<div class="page-header">
+    <h1>Tabela rekordów</h1>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>created_at</th>
+        <th>patientnumber</th>
+        <th>age</th>
+        <th>sex</th>
+        <th>researchdate</th>
+        <th>roaddistance</th>
+        <th>noise</th>
+        <th>heating</th>
+        <th>education</th>
+        <th>tobaccosmoke</th>
+        <th>smoking</th>
+        <th>agesmoke</th>
+        <th>regularsmoke</th>
+        <th>nocig</th>
+        <th>anocigyeard</th>
+        <th>anocigyear1</th>
+        <th>anocigyear2</th>
+        <th>anocigyear5</th>
+        <th>cigarbrand</th>
+        <th>quityear</th>
+        <th>quit1year</th>
+        <th>quityear1</th>
+        <th>quityear2</th>
+        <th>quityear5</th>
+        <th>quityear10</th>
+        <th>quitcigarbrand</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for element in dane %}
+    <tr>
+        <td>{{element.id}}</td>
+        <td>{{element.created_at}}</td>
+        <td>{{element.patientnumber}}</td>
+        <td>{{element.age}}</td>
+        <td>{{element.sex}}</td>
+        <td>{{element.researchdate}}</td>
+        <td>{{element.roaddistance}}</td>
+        <td>{{element.noise}}</td>
+        <td>{{element.heating}}</td>
+        <td>{{element.education}}</td>
+        <td>{{element.tobaccosmoke}}</td>
+        <td>{{element.smoking}}</td>
+        <td>{{element.agesmoke}}</td>
+        <td>{{element.regularsmoke}}</td>
+        <td>{{element.nocig}}</td>
+        <td>{{element.anocigyeard}}</td>
+        <td>{{element.anocigyear1}}</td>
+        <td>{{element.anocigyear2}}</td>
+        <td>{{element.anocigyear5}}</td>
+        <td>{{element.cigarbrand}}</td>
+        <td>{{element.quityear}}</td>
+        <td>{{element.quit1year}}</td>
+        <td>{{element.quityear1}}</td>
+        <td>{{element.quityear2}}</td>
+        <td>{{element.quityear5}}</td>
+        <td>{{element.quityear10}}</td>
+        <td>{{element.quitcigarbrand}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
