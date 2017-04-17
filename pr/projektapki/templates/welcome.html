@@ -1,0 +1,28 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron" style="background-image: url(static/css/mri-scanner5.jpg);  background-size: 100%; text-align:center; " >
+   <h1 style="color: #FFFFFF">Witam w ankiecie</h1>
+<p style="color:#F4F4F4">Ankieta dla osób po badaniu rezonansem magnetycznym dotycząca palenia przez nich papierosów.</p>
+  </div>
+
+  <!--<div class="page-header">
+  <h1>Proszę o wypełnienie ankiety</h1>
+  </div>
+  <p>-->
+<b>Proszę wpisać numer uzyskany od pracownika PAN</b>
+<form action="/form" method="GET">
+  <input type="number" name="patientnumber">
+  <br>
+  <br>
+  <button type="submit" class="btn btn-info">Wypełnij ankietę</button>
+</form>
+<br>
+
+
+
+{% endblock %}
+
