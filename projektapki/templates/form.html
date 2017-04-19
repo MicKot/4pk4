@@ -6,9 +6,11 @@
 
 <script>
     function WypelnijDaty() {
-    var x = document.getElementById("ResearchDate").value;
-    document.getElementById("c").innerHTML = x;
-    document.getElementById("d").innerHTML = x;
+    var input = document.getElementById( 'ResearchDate' ).value;
+	var d = new Date( input );
+    year = d.getFullYear();
+    document.getElementById("c").innerHTML = year;
+    document.getElementById("d").innerHTML = year;
     }
 
     function OpcjePalenia(){
@@ -175,13 +177,13 @@
     </div>
 
 
-	<div class="form-group">
+	<div class="form-group" id="regularsmoke">
 		<label>Czy pali Pan/Pani regularnie?</label>
 		<label class="radio-inline"> <input type="radio" name="regularsmoke" value="yes"> Tak
 		</label>
-		<label class="radio-inline">
-		<input type="radio" name="regularsmoke" value="no" checked="checked" > Nie
+		<label class="radio-inline"> <input type="radio" name="regularsmoke" value="no"> Nie
 		</label>
+		<input type="radio" name="regularsmoke" value="" checked="checked" style="display:none;">
     </div>
 
 
